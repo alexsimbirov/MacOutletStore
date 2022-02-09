@@ -1280,6 +1280,7 @@ const createCard = (items) => {
    items.map((item) => {
       const card = document.createElement('div');
       card.className = 'card';
+      card.onclick = (()=>createModalWindow(item))
       cardsContainer.appendChild(card);
 
       const cardBody = document.createElement('div');
@@ -1335,8 +1336,9 @@ const createCard = (items) => {
       } else {
          itemButton.className = 'card-btn-active';
       }      
-      itemButton.innerText = 'Add to card';
+      itemButton.innerText = 'Add to cart';
       cardBody.appendChild(itemButton);
+      cardBody.querySelector('button').addEventListener("click", (e)=>e.stopPropagation())
 
 
       const cardFooter = document.createElement('div');
@@ -1477,3 +1479,57 @@ dropDownDisplayBtn.addEventListener('click', function() {
       displayBtn.className = 'display-btn';
    }
 })
+
+function hideModalWindowSpace(){
+    const modalWindowSpace = document.querySelector('.modal-window-space-close');
+    modalWindowSpace.remove();
+    const modalWindowBlock = document.querySelector('.modal-window-block');
+    modalWindowBlock.remove();
+}
+
+const filterSection = document.getElementById('filter-section');
+
+function createModalWindow(item) {
+    const modalWindowSpace = document.createElement('div');
+    modalWindowSpace.addEventListener("click", function (){
+        hideModalWindowSpace()
+    })
+        modalWindowSpace.innerHTML = `
+        <div id="modal-window-space-close" class="modal-window-space-close">
+              <div class="modal-window-block">
+                <div class="modal-window-image">
+                  <img src="${item.imgUrl}" alt="Device image" class="device-img">
+                </div>
+                <div class="modal-window-body">
+                  <span class="mw-body-header">${item.name}</span>
+                  <div class="modal-body-card-footer">
+                    <img class="card-footer-icon-like" src="img/icons/like_filled.svg" alt="Like filled icon">
+                    <p class="card-footer-column-reviews"><strong>${item.orderInfo.reviews}%</strong> Positive reviews <br>Above avarage</p>
+                    <p class="card-footer-column-orders"><strong>999</strong><br>orders</p>
+                  </div>
+                  <div class="mw-body-discription-box">
+                    <p><span>Color: </span>${item.color}</p>
+                    <p><span>Operating System: </span>${item.os}</p>
+                    <p><span>Chip: </span>${item.chip.name}</p>
+                    <p><span>Height: </span>${item.size.height}</p>
+                    <p><span>Width: </span>${item.size.width}</p>
+                    <p><span>Depth: </span>${item.size.depth}</p>
+                    <p><span>Weight: </span>${item.size.weight}</p>
+                  </div>
+                </div>
+                <div id="modal-window-price" class="modal-window-price">
+                  <span class="mw-price">$ ${item.price}</span>
+                  <span class="mw-stock">Stock: <b>${item.orderInfo.inStock}</b> pcs.</span>
+                  <button type="button" class="card-btn-active">Add to cart</button>
+                </div>
+              </div>
+            </div>`;  
+     
+            
+            filterSection.appendChild(modalWindowSpace);            
+            modalWindowSpace.querySelector('.modal-window-block').addEventListener("click", (e)=>e.stopPropagation())
+}
+
+
+createModalWindow(items)
+
