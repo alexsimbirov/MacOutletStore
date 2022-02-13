@@ -20,6 +20,7 @@ button {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 15px;
+  position: relative;
 }
 .header-holder {
    display: flex;
@@ -159,7 +160,8 @@ button {
    margin-bottom: 100px;
 }
 .card {
-   width: 300px;   
+   width: 300px;  
+   height: 480px;
    border-radius: 0.75rem;
    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -167,6 +169,7 @@ button {
    position: relative; 
    margin-bottom: 50px;
    display: flex;
+   justify-content: space-between;
    flex-direction: column;   
 }
 .card-body {
@@ -174,12 +177,15 @@ button {
    margin-bottom: 14px;
    position: relative;
    display: flex;
+   justify-content: space-between;
    flex-direction: column; 
    align-items: center;
 }
 .card-image {
    width: 200px;
+   height: 200px;
    padding-top: 14px;
+   object-fit: contain;
 }
 .card-title {
    font-size: 24px;
@@ -190,8 +196,7 @@ button {
 .card-description {
    font-size: 14px;
    color: #767272;
-   padding-bottom: 12px;
-   
+   padding-bottom: 12px;   
 }
 .card-btn-active {
    width: 150px;
@@ -202,9 +207,7 @@ button {
    border-radius: 0.5rem;
    margin: 0 auto;
    display: block;
-   border-style: inherit;  
-   align-items: flex-end;
-   
+   border-style: inherit;    
 }
 .card-btn-disabled { 
    width: 150px;
@@ -216,7 +219,7 @@ button {
    margin: 0 auto;
    display: block;
    border-style: inherit;  
-   align-items: flex-end;   
+     
 }
 .card-footer {
    display: flex;
@@ -225,9 +228,9 @@ button {
    color: #3B3E66;
    font-size: 14px;
    line-height: 1.5;
-   padding: 21px 23px 29px 44px;
-   align-items: flex-end;
-   flex: 1 1 auto;   
+   padding: 21px 23px 29px 44px;   
+   border-radius: 0 0 0.75rem 0.75rem;
+   align-self:flex-end; 
 }
 .column-orders {
    text-align: center;
@@ -273,8 +276,7 @@ button {
    left: 15px;
  }
  .icon-like-filled-block img{
-   width: 20px;
-   height: auto;
+   width: 20px;   
  }
 
  .content {
@@ -505,8 +507,141 @@ button {
    color: #3B3E66;
    padding-bottom: 30px;   
 }
+.header-btn,
+.cart-body button{
+   background: none;
+   border: none;
+}
 
-
+.cart-block {
+   position: absolute;
+   content: '';
+   top: 0;
+   right: 15px;
+}
+.cart {
+   width: 433px;
+   /* height: 500px; */
+   background-color: white;
+   border-radius: 0.5rem;
+   -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+   -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.cart-header {
+   height: 113px;
+   border-bottom: 1px solid #C4C4C4;
+   text-align: center;
+}
+.cart-container {
+   width: 378px;
+   margin: 0 auto;
+}
+.cart-container h2{
+   font-size: 24px;
+   font-weight: bold;
+   padding-top: 27px;
+}
+.cart-container p{
+   font-size: 16px;
+   color: #767272;
+   padding-top: 11px;
+}
+.cart-body{
+   border-bottom: 1px solid #C4C4C4;
+}
+.cart-body .cart-container{
+   display: flex;
+   justify-content: space-between;
+   height: 125px;   
+   align-items: center;
+}
+.cart-body-img {
+   width: 100px;
+   height: 100px;
+}
+.cart-item-title {
+   font-size: 12px;
+   font-weight: bold;
+   padding-bottom: 9px;
+}
+.cart-item-price {
+   margin-top: -11px;
+}
+.cart-item-price span{
+   color: #4191FF;
+   background-color: #EAF6FF;
+   font-size: 12px;
+   font-weight: bold;
+   padding: 4px 9px;
+   border-radius: 0.25rem;   
+}
+.cart-item-qty {
+   display: flex;
+   position: relative;
+}
+.arrow-left {
+   width: 10px;
+   height: 10px;
+   transform: rotate(180deg);
+   position: relative;
+   top: 12px;
+}
+#item-quantity {
+   padding: 0 16px;
+   color: #4191FF;
+   font-size: 20px;
+   font-weight: bold;
+}
+.arrow-right { 
+   width: 10px;
+   height: 10px;
+   position: relative;
+   top: 2px;
+}
+.cart-item-delete img{
+   width: 30px;
+   height: 30px;
+   position: relative;
+   top: 3px;
+}
+.cart-footer {
+   background-color: #EAF6FF;
+}
+.cart-footer-total {
+   height: 50px;
+   display: flex;
+   justify-content: space-between;  
+}
+#cart-footer-total-pcs, #cart-footer-total-price {
+   align-self: center;
+   padding: 0;
+   font-size: 12px;
+   color: #767272;
+}
+#cart-footer-total-pcs, #cart-footer-total-price span {
+   color: #000;
+   font-weight: bold;
+}
+.total-am{
+   color: #767272;
+}
+.cart-btn{
+   text-align: center;
+  padding: 20px 0 20px;
+}
+.btn-buy {
+   width: 250px;
+   height: 50px;
+   color: #ffffff;
+   background-color: #3C44B1;
+   font-size: 20px;
+   border-radius: 0.5rem;
+   margin: 0 auto;
+   display: block;
+   border-style: inherit;  
+   font-weight: bold;
+}
 
 
 

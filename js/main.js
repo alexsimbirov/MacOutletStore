@@ -1482,9 +1482,7 @@ dropDownDisplayBtn.addEventListener('click', function() {
 
 function hideModalWindowSpace(){
     const modalWindowSpace = document.querySelector('.modal-window-space-close');
-    modalWindowSpace.remove();
-    const modalWindowBlock = document.querySelector('.modal-window-block');
-    modalWindowBlock.remove();
+    modalWindowSpace.remove();    
 }
 
 const filterSection = document.getElementById('filter-section');
@@ -1529,6 +1527,137 @@ function createModalWindow(item) {
             filterSection.appendChild(modalWindowSpace);            
             modalWindowSpace.querySelector('.modal-window-block').addEventListener("click", (e)=>e.stopPropagation())
 }
+
+
+// filter = {
+//    display:[]
+// }
+
+
+
+// function filterUpdate(key,value){
+//    console.log(key,value.srcElement.defaultValue)
+//    if(value.srcElement.checked){
+//    filter[key].push({from :value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+//    }else{
+//    filter.display =[];
+//    }
+//    runFilter()
+// }
+
+// function runFilter(){
+//    let filterObjects = items.filter(device => filtreredData(device));
+//    cardsContainer.innerHTML = "";
+//    createCard(filterObjects)
+// }
+
+
+// function filtreredData(device){
+// let filterDevice = filter.display;
+// let res = filterDevice.find(filterItem=>  device.display > filterItem.from && device.display < filterItem.to)
+// //let allKeys =filter.keys()
+// console.log(res)
+// return !!res
+// }
+
+filter = {
+    display:[]
+    // color:[]
+    // memory:[]
+    // os:[]
+ }
+ 
+ 
+ 
+ function filterUpdateDisplay(key,value){
+    console.log(key,value.srcElement.defaultValue)
+    if(value.srcElement.checked){
+    filter[key].push({from :value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+    }else{
+    filter.display =[];
+    }
+    runFilterDisplay()
+ }
+ 
+ function runFilterDisplay(){
+    let filterObjects = items.filter(device => filtreredData(device));
+    cardsContainer.innerHTML = "";
+    createCard(filterObjects)
+ }
+  
+ function filtreredData(device){
+ let filterDevice = filter.display;
+ let res = filterDevice.find(filterItem=>  device.display > filterItem.from && device.display < filterItem.to)
+ //let allKeys =filter.keys()
+ console.log(res)
+ return !!res
+ }
+
+    
+//  ///COLOR FILTER
+// function filterUpdateColor(key,value){
+//     console.log(key,value.srcElement.defaultValue)
+//     if(value.srcElement.checked){
+//     filter[key].push(value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+//     }else{
+//     filter.color =[];
+//     }
+//     runFilterColor()
+//  }
+//  function runFilterColor(){
+//     let filterObjects = items.filter(device => filtreredData(device));
+//     cardsContainer.innerHTML = "";
+//     createCard(filterObjects)
+//  }
+//  function filtreredDataColor(device){
+//     let filterDevice = filter.color;
+//     let res = filterDevice.find(filterItem=>  device.color > filterItem.from && device.color < filterItem.to)
+//     //let allKeys =filter.keys()
+//     console.log(res)
+//     return !!res
+//     }
+
+// let arr_color=[]
+// function color($this){
+//     let value=$this.value
+    
+//     if($this.checked==true)
+//     {
+//         for (let i = 0; i < items.length; i++) {
+//             for(let j=0;j<items[i].color.length;j++){
+//                 if(items[i].color[j]==value){
+//                     arr_color.push(items[i])
+//                 }
+//             }        
+//         }
+//     }
+
+//     else 
+//     {
+            
+//             let tmp_del=[]
+//             for (let j = 0; j < arr_color.length; j++) {
+//                 let flag=false
+//                 let index=arr_color[j].color.indexOf(value)
+                
+//                 for(let i = 0; i<tmp_del.length;i++){
+//                     if(tmp_del[i].id==arr_color[j].id)flag=true
+//                 }
+
+//                 if(index>=0 && flag==false){
+//                     tmp_del.push(arr_color[j])
+//                     arr_color.splice(j,1)
+//                     j--;
+//                 }
+                
+//             }  
+        
+//     }
+//     // console.log(arr_color)
+//     rewrite(arr_color)
+// }
+
+
 
 
 createModalWindow(items)
