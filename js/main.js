@@ -1749,67 +1749,19 @@ function color($this){
     
 }
 
-// OS FILTER
-// let arr_os=[]
-function os($this){
-
+// MEMORY FILTER
+function memory($this){
     cardsContainer.innerHTML=""
-    let arr_os=[]
-    let value=$this.value
-    
-    if($this.checked==true)
-    {
-        for (let i = 0; i < items.length; i++) {
-            for(let j=0; j<items[i].os.length; j++){
-                if(items[i].os[j]==value){
-                    arr_os.push(items[i])
-                }
-            }        
-        }
-    }
 
-    else 
-    {
-            
-            let tmp_del=[]
-            for (let j = 0; j < arr_os.length; j++) {
-                let flag=false
-                let index=arr_os[j].os.indexOf(value)
-                
-                for(let i = 0; i<tmp_del.length;i++){
-                    if(tmp_del[i].id==arr_os[j].id)flag=true
-                }
-
-                if(index>=0 && flag==false){
-                    tmp_del.push(arr_os[j])
-                    arr_os.splice(j,1)
-                    j--;
-                }
-                
-            }  
-        
-    }
-    // console.log(arr_os)
-    createCard(arr_os)
-    
-}
-
-// STORAGE FILTER
-// let arr_storage=[]
-function storage($this){
-
-    cardsContainer.innerHTML=""
     let arr_storage=[]
     let value=$this.value
     
     if($this.checked==true)
     {
         for (let i = 0; i < items.length; i++) {
-            for(let j=0; j<items[i].storage.length; j++){
-                if(items[i].storage[j]==value){
-                    arr_storage.push(items[i])
-                }
-            }        
+            if(items[i].storage==value){
+                arr_storage.push(items[i])
+            }       
         }
     }
 
@@ -1819,13 +1771,13 @@ function storage($this){
             let tmp_del=[]
             for (let j = 0; j < arr_storage.length; j++) {
                 let flag=false
-                let index=arr_storage[j].storage.indexOf(value)
+
                 
                 for(let i = 0; i<tmp_del.length;i++){
                     if(tmp_del[i].id==arr_storage[j].id)flag=true
                 }
 
-                if(index>=0 && flag==false){
+                if(arr_storage[j].storage==value && flag==false){
                     tmp_del.push(arr_storage[j])
                     arr_storage.splice(j,1)
                     j--;
@@ -1834,7 +1786,48 @@ function storage($this){
             }  
         
     }
-    // console.log(arr_storage)
+    console.log(arr_storage);
     createCard(arr_storage)
+}
+
+
+// OS FILTER
+function os($this){
+    cardsContainer.innerHTML=""
+
+let arr_os=[]
+
+    let value=$this.value
     
+    if($this.checked==true)
+    {
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].os==value){
+                arr_os.push(items[i])
+            }       
+        }
+    }
+
+    else 
+    {
+            
+            let tmp_del=[]
+            for (let j = 0; j < arr_os.length; j++) {
+                let flag=false
+
+                
+                for(let i = 0; i<tmp_del.length;i++){
+                    if(tmp_del[i].id==arr_os[j].id)flag=true
+                }
+
+                if(arr_os[j].os==value && flag==false){
+                    tmp_del.push(arr_os[j])
+                    arr_os.splice(j,1)
+                    j--;
+                }
+                
+            }  
+        
+    }
+    createCard(arr_os)
 }
