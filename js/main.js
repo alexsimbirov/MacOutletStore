@@ -1529,106 +1529,152 @@ function createModalWindow(item) {
 }
 
 
-// filter = {
-//    display:[]
-// }
-
-
-
-// function filterUpdate(key,value){
-//    console.log(key,value.srcElement.defaultValue)
-//    if(value.srcElement.checked){
-//    filter[key].push({from :value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
-//    }else{
-//    filter.display =[];
-//    }
-//    runFilter()
-// }
-
-// function runFilter(){
-//    let filterObjects = items.filter(device => filtreredData(device));
-//    cardsContainer.innerHTML = "";
-//    createCard(filterObjects)
-// }
-
-
-// function filtreredData(device){
-// let filterDevice = filter.display;
-// let res = filterDevice.find(filterItem=>  device.display > filterItem.from && device.display < filterItem.to)
-// //let allKeys =filter.keys()
-// console.log(res)
-// return !!res
-// }
-
+// DISPLAY FILTER
 filter = {
     display:[]
-    // color:[]
-    // memory:[]
-    // os:[]
  }
  
  
  
- function filterUpdateDisplay(key,value){
+ function filterUpdate(key,value){
     console.log(key,value.srcElement.defaultValue)
     if(value.srcElement.checked){
-    filter[key].push({from :value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+        let index = filter[key].find(filterValue => filterValue.id === value.srcElement.defaultValue)
+ if(!index){
+    filter[key].push({id:value.srcElement.defaultValue, from :value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+   } 
     }else{
-    filter.display =[];
+    let index = filter[key].findIndex(filterValue => filterValue.id === value.srcElement.defaultValue)
+    if(index>-1){
+    filter[key].splice(index);
     }
-    runFilterDisplay()
+ 
+    }
+    if(filter[key].length===0){
+        createCard(items)
+        return;
+    }
+ runFilter()
  }
  
- function runFilterDisplay(){
+ function runFilter(){
+ 
     let filterObjects = items.filter(device => filtreredData(device));
     cardsContainer.innerHTML = "";
     createCard(filterObjects)
  }
-  
+ 
+ 
  function filtreredData(device){
  let filterDevice = filter.display;
- let res = filterDevice.find(filterItem=>  device.display > filterItem.from && device.display < filterItem.to)
+ let res = filterDevice.find(fiterItem=>  device.display > fiterItem.from && device.display < fiterItem.to)
  //let allKeys =filter.keys()
  console.log(res)
  return !!res
  }
 
-    
-//  ///COLOR FILTER
-// function filterUpdateColor(key,value){
+
+
+
+// filter = {
+//     display:[],
+//     color:[]
+//  }
+ 
+ 
+ 
+//  function filterUpdate(key,value){
 //     console.log(key,value.srcElement.defaultValue)
 //     if(value.srcElement.checked){
-//     filter[key].push(value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+//         let index = filter[key].find(filterValue => filterValue.id === value.srcElement.defaultValue)
+//  if(!index){
+//     filter[key].push({id:value.srcElement.defaultValue, from :value.srcElement.defaultValue.split("-")[0],to :value.srcElement.defaultValue.split("-")[1]});
+//    } 
 //     }else{
-//     filter.color =[];
+//     let index = filter[key].findIndex(filterValue => filterValue.id === value.srcElement.defaultValue)
+//     if(index>-1){
+//     filter[key].splice(index);
 //     }
-//     runFilterColor()
+ 
+//     }
+//     if(filter[key].length===0){
+//         createCard(items)
+//         return;
+//     }
+// //  runFilter()
 //  }
-//  function runFilterColor(){
+
+//  function filterUpdateColor(key,value){
+//     console.log(key,value.srcElement.defaultValue)
+//     if(value.srcElement.checked){
+//         let index = filter[key].find(filterValue => filterValue.id === value.srcElement.defaultValue)
+//  if(!index){
+//     filter[key].push({id: value.srcElement.defaultValue});
+//    } 
+//     }else{
+//     let index = filter[key].findIndex(filterValue => filterValue.id === value.srcElement.defaultValue)
+//     if(index>-1){
+//     filter[key].splice(index);
+//     }
+ 
+//     }
+//     let counter = false;
+//     for(filterKey in filter){
+//         if(filterKey.length>0){
+                       
+//             counter = true;
+//             break;
+//         }
+//     }
+//     if(counter){
+//         runFilter()      
+//     } else {
+//         createCard(items) 
+//     }   
+ 
+//  }
+
+ 
+//  function runFilter(){
+ 
 //     let filterObjects = items.filter(device => filtreredData(device));
 //     cardsContainer.innerHTML = "";
 //     createCard(filterObjects)
 //  }
-//  function filtreredDataColor(device){
-//     let filterDevice = filter.color;
-//     let res = filterDevice.find(filterItem=>  device.color > filterItem.from && device.color < filterItem.to)
-//     //let allKeys =filter.keys()
-//     console.log(res)
-//     return !!res
-//     }
+ 
+ 
+//  function filtreredData(device){
+//    let keys = Object.keys(filter);
+//   let res = null;
+//    keys.map(key=>{
+//        if(key=='device'){
+//         res = filterDevice.find(fiterItem=>  device.display > fiterItem.from && device.display < fiterItem.to)
 
-// let arr_color=[]
+//        }
+//        if(key=='color'){
+//         res =  filter[key].find(fiterItem=>  device.color==fiterItem.id )
+//     }
+//  })
+   
+//  //let allKeys =filter.keys()
+//  console.log(res)
+//  return !!res
+//  }
+
+
+
+createModalWindow(items)
+
 // function color($this){
+//     cardsContainer.innerHTML=""
+//     let arr_color=[]
 //     let value=$this.value
-    
 //     if($this.checked==true)
 //     {
 //         for (let i = 0; i < items.length; i++) {
-//             for(let j=0;j<items[i].color.length;j++){
-//                 if(items[i].color[j]==value){
-//                     arr_color.push(items[i])
-//                 }
-//             }        
+//             if(items[i].color==value){
+//                 arr_color.push(items[i])
+//             }       
 //         }
 //     }
 
@@ -1638,13 +1684,13 @@ filter = {
 //             let tmp_del=[]
 //             for (let j = 0; j < arr_color.length; j++) {
 //                 let flag=false
-//                 let index=arr_color[j].color.indexOf(value)
+
                 
 //                 for(let i = 0; i<tmp_del.length;i++){
 //                     if(tmp_del[i].id==arr_color[j].id)flag=true
 //                 }
 
-//                 if(index>=0 && flag==false){
+//                 if(arr_color[j].color==value && flag==false){
 //                     tmp_del.push(arr_color[j])
 //                     arr_color.splice(j,1)
 //                     j--;
@@ -1653,12 +1699,142 @@ filter = {
 //             }  
         
 //     }
-//     // console.log(arr_color)
-//     rewrite(arr_color)
+//     console.log(arr_color);
+//     createCard(arr_color)
+
 // }
 
+// COLOR FILTER
+// let arr_color=[]
+function color($this){
 
+    cardsContainer.innerHTML=""
+    let arr_color=[]
+    let value=$this.value
+    
+    if($this.checked==true)
+    {
+        for (let i = 0; i < items.length; i++) {
+            for(let j=0;j<items[i].color.length;j++){
+                if(items[i].color[j]==value){
+                    arr_color.push(items[i])
+                }
+            }        
+        }
+    }
 
+    else 
+    {
+            
+            let tmp_del=[]
+            for (let j = 0; j < arr_color.length; j++) {
+                let flag=false
+                let index=arr_color[j].color.indexOf(value)
+                
+                for(let i = 0; i<tmp_del.length;i++){
+                    if(tmp_del[i].id==arr_color[j].id)flag=true
+                }
 
-createModalWindow(items)
+                if(index>=0 && flag==false){
+                    tmp_del.push(arr_color[j])
+                    arr_color.splice(j,1)
+                    j--;
+                }
+                
+            }  
+        
+    }
+    // console.log(arr_color)
+    createCard(arr_color)
+    
+}
 
+// OS FILTER
+// let arr_os=[]
+function os($this){
+
+    cardsContainer.innerHTML=""
+    let arr_os=[]
+    let value=$this.value
+    
+    if($this.checked==true)
+    {
+        for (let i = 0; i < items.length; i++) {
+            for(let j=0; j<items[i].os.length; j++){
+                if(items[i].os[j]==value){
+                    arr_os.push(items[i])
+                }
+            }        
+        }
+    }
+
+    else 
+    {
+            
+            let tmp_del=[]
+            for (let j = 0; j < arr_os.length; j++) {
+                let flag=false
+                let index=arr_os[j].os.indexOf(value)
+                
+                for(let i = 0; i<tmp_del.length;i++){
+                    if(tmp_del[i].id==arr_os[j].id)flag=true
+                }
+
+                if(index>=0 && flag==false){
+                    tmp_del.push(arr_os[j])
+                    arr_os.splice(j,1)
+                    j--;
+                }
+                
+            }  
+        
+    }
+    // console.log(arr_os)
+    createCard(arr_os)
+    
+}
+
+// STORAGE FILTER
+// let arr_storage=[]
+function storage($this){
+
+    cardsContainer.innerHTML=""
+    let arr_storage=[]
+    let value=$this.value
+    
+    if($this.checked==true)
+    {
+        for (let i = 0; i < items.length; i++) {
+            for(let j=0; j<items[i].storage.length; j++){
+                if(items[i].storage[j]==value){
+                    arr_storage.push(items[i])
+                }
+            }        
+        }
+    }
+
+    else 
+    {
+            
+            let tmp_del=[]
+            for (let j = 0; j < arr_storage.length; j++) {
+                let flag=false
+                let index=arr_storage[j].storage.indexOf(value)
+                
+                for(let i = 0; i<tmp_del.length;i++){
+                    if(tmp_del[i].id==arr_storage[j].id)flag=true
+                }
+
+                if(index>=0 && flag==false){
+                    tmp_del.push(arr_storage[j])
+                    arr_storage.splice(j,1)
+                    j--;
+                }
+                
+            }  
+        
+    }
+    // console.log(arr_storage)
+    createCard(arr_storage)
+    
+}

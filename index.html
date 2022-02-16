@@ -101,16 +101,16 @@
                       <div id='color-content' class="color-content">
                         <div class="checkselect">
                           <div class="first-column">
-                            <label><input type="checkbox" value="Red" onclick="filterUpdateColor('color', event)"><span>Red</span></label>
-                            <label><input type="checkbox" value="Green" onclick="filterUpdateColor('color', event)"><span>Green</span></label>
-                            <label><input type="checkbox" value="Black" onclick="filterUpdateColor('color', event)"><span>Black</span></label>
-                            <label><input type="checkbox" value="White" onclick="filterUpdateColor('color', event)"><span>White</span></label>
+                            <label><input type="checkbox" value="Red" onclick="color(this)"><span>Red</span></label>
+                            <label><input type="checkbox" value="Green" onclick="color(this)"><span>Green</span></label>
+                            <label><input type="checkbox" value="Black" onclick="color(this)"><span>Black</span></label>
+                            <label><input type="checkbox" value="White" onclick="color(this)"><span>White</span></label>
                           </div>
                           <div class="second-column">
-                            <label><input type="checkbox" value="Blue" onclick="filterUpdateColor('color', event)"><span>Blue</span></label>
-                            <label><input type="checkbox" value="Space Grey" onclick="filterUpdateColor('color', event)"><span>Grey</span></label>
-                            <label><input type="checkbox" value="Gold" onclick="filterUpdateColor('color', event)"><span>Gold</span></label>
-                            <label><input type="checkbox" value="Yellow" onclick="filterUpdateColor('color', event)"><span>Yellow</span></label>
+                            <label><input type="checkbox" value="Blue" onclick="color(this)"><span>Blue</span></label>
+                            <label><input type="checkbox" value="Space Grey" onclick="color(this)"><span>Grey</span></label>
+                            <label><input type="checkbox" value="Gold" onclick="color(this)"><span>Gold</span></label>
+                            <label><input type="checkbox" value="Yellow" onclick="color(this)"><span>Yellow</span></label>
                           </div>
                         </div>
                       </div>
@@ -123,16 +123,16 @@
                       <div id='memory-content' class="memory-content">
                         <div class="checkselect">
                           <div class="first-column">
-                            <label><input type="checkbox" value="32"><span>32 Gb</span></label>
-                            <label><input type="checkbox" value="64"><span>64 Gb</span></label>
-                            <label><input type="checkbox" value="128"><span>128 Gb</span></label>
-                            <label><input type="checkbox" value="256"><span>256 Gb</span></label>
+                            <label><input type="checkbox" value="32" onclick="storage(this)"><span>32 Gb</span></label>
+                            <label><input type="checkbox" value="64" onclick="storage(this)"><span>64 Gb</span></label>
+                            <label><input type="checkbox" value="128" onclick="storage(this)"><span>128 Gb</span></label>
+                            <label><input type="checkbox" value="256" onclick="storage(this)"><span>256 Gb</span></label>
                           </div>
                           <div class="second-column">
-                            <label><input type="checkbox" value="512"><span>512 Gb</span></label>
-                            <label><input type="checkbox" value="1024"><span>1 TB</span></label>
-                            <label><input type="checkbox" value="2056"><span>2 TB</span></label>
-                            <label><input type="checkbox" value="4096"><span>4 TB</span></label>
+                            <label><input type="checkbox" value="512" onclick="storage(this)"><span>512 Gb</span></label>
+                            <label><input type="checkbox" value="1024" onclick="storage(this)"><span>1 TB</span></label>
+                            <label><input type="checkbox" value="2056" onclick="storage(this)"><span>2 TB</span></label>
+                            <label><input type="checkbox" value="4096" onclick="storage(this)"><span>4 TB</span></label>
                           </div>
                         </div>
                       </div>
@@ -145,10 +145,10 @@
                       <div id='os-content' class="os-content">
                         <div class="checkselect">
                           <div class="first-column">
-                            <label><input type="checkbox" value="IOS"><span>IOS</span></label>
-                            <label><input type="checkbox" value="Mac OS"><span>Mac OS</span></label>
-                            <label><input type="checkbox" value="tvOS"><span>tvOS</span></label>
-                            <label><input type="checkbox" value="Watch OS"><span>Watch OS</span></label>
+                            <label><input type="checkbox" value="IOS" onclick="os(this)"><span>IOS</span></label>
+                            <label><input type="checkbox" value="macOS" onclick="os(this)"><span>Mac OS</span></label>
+                            <label><input type="checkbox" value="tvOS" onclick="os(this)"><span>tvOS</span></label>
+                            <label><input type="checkbox" value="Watch OS" onclick="os(this)"><span>Watch OS</span></label>
                           </div>
                         </div>
                       </div>
@@ -161,11 +161,11 @@
                       <div id='display-content' class="display-content">
                         <div class="checkselect">
                           <div class="first-column">
-                            <label><input type="checkbox" value="2-5" onclick="filterUpdateDisplay('display', event)"><span> 2 - 5 inch</span></label>
-                            <label><input type="checkbox" value="5-7" onclick="filterUpdateDisplay('display', event)"><span> 5 - 7 inch</span></label>
-                            <label><input type="checkbox" value="7-12" onclick="filterUpdateDisplay('display', event)"><span> 7 - 12 inch</span></label>
-                            <label><input type="checkbox" value="12-16" onclick="filterUpdateDisplay('display', event)"><span> 12 - 16 inch</span></label>
-                            <label><input type="checkbox" value="17-999" onclick="filterUpdateDisplay('display', event)"><span> 16+ inch</span></label>
+                            <label><input type="checkbox" value="2-5" onclick="filterUpdate('display', event)"><span> 2 - 5 inch</span></label>
+                            <label><input type="checkbox" value="5-7" onclick="filterUpdate('display', event)"><span> 5 - 7 inch</span></label>
+                            <label><input type="checkbox" value="7-12" onclick="filterUpdate('display', event)"><span> 7 - 12 inch</span></label>
+                            <label><input type="checkbox" value="12-16" onclick="filterUpdate('display', event)"><span> 12 - 16 inch</span></label>
+                            <label><input type="checkbox" value="17-999" onclick="filterUpdate('display', event)"><span> 16+ inch</span></label>
                           </div>
                         </div>
                       </div>
